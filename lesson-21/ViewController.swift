@@ -7,11 +7,6 @@
 
 import UIKit
 
-//infix operator ** { associativity left precedence 170 }
-//
-//func ** (num: Double, power: Double) -> Double{
-//    return pow(num, power)
-//}
 
 precedencegroup ExponentiationPrecedence {
   associativity: right
@@ -51,6 +46,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var outputDisplay: UILabel!
     
     @IBAction func numberPressed(_ sender: UIButton) {
+       // sender.titleLabel?.text ?? ""
         if runningNumber.count <= 9 {
             runningNumber += "\(sender.tag)"
             outputDisplay.text = runningNumber
@@ -71,9 +67,11 @@ class ViewController: UIViewController {
     }
     @IBAction func dotPressed(_ sender: UIButton) {
         if runningNumber.count <= 8 {
-            runningNumber += "."
-            outputDisplay.text = runningNumber
-        }
+            if !(runningNumber.contains(".")){
+                runningNumber += "."
+                outputDisplay.text = runningNumber
+            }
+        } 
     }
     
     @IBAction func porcentagePressed(_ sender: UIButton) {
